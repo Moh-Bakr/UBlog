@@ -10,21 +10,6 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/ping', function (){
-//
-//
-//    $mailchimp = new \MailchimpMarketing\ApiClient();
-//
-//    $mailchimp->setConfig([
-//        'apiKey' => config('services.mailchimp.key'),
-//        'server' => 'us5'
-//    ]);
-//
-//    $response = $mailchimp->lists->getList('418efee6bc');
-//    ddd($response);
-//
-//
-//});
 Route::get('/',[PostController::class,'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class,'show']);
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class,'store']);
@@ -37,19 +22,6 @@ Route::post('register',[RegisterController::class,'store'])->middleware('guest')
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
-
-
-//Route::get('categories/{category:slug}', function (Category $category) {
-//    return view('posts.index', [
-//        'posts' => $category->posts,
-//    ]);
-//});
-
-//Route::get('authors/{author:username}', function (User $author){
-//    return view('posts.index ',[
-//        'posts'=> $author->posts,
-//    ]);
-//});
 
 
 
